@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/css/style.min.css">
+
+    <!-- favicons -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon//favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon//site.webmanifest">
+    <link rel="mask-icon" href="assets/img/favicon//safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00acf0">
+    <meta name="theme-color" content="#ffffff">
+    <title>Погода</title>
+</head>
+<body>
+
+<div class="weather__page weather__sunny">
+    <div class="container">
+
+        <header class="header">
+            <p class="header__city">Москва</p>
+            <main class="header__main">
+                <img src="assets/img/icons/sun.svg" alt="Sun" class="header__img">
+                <p class="header__degrees">4°</p>
+            </main>
+            <p class="header__weather">Солнечно</p>
+        </header>
+
+        <main class="main">
+            <p class="main__title">По дням</p>
+            <div class="weather__items">
+
+                <div class="weather__item weather__item--today">
+                    <p class="weather__day">Сегодня</p>
+                    <img src="assets/img/icons/sun.svg" alt="Sun" class="weather__img">
+                    <div class="weather__degrees">
+                        <p class="weather__day-degrees">4°</p>
+                        <p class="weather__night-degrees">3°</p>
+                    </div>
+                </div>
+                <div class="weather__item">
+                    <p class="weather__day">Завтра</p>
+                    <img src="assets/img/icons/cloudy.svg" alt="Sun" class="weather__img">
+                    <div class="weather__degrees">
+                        <p class="weather__day-degrees">19°</p>
+                        <p class="weather__night-degrees">6°</p>
+                    </div>
+                </div>
+                <div class="weather__item">
+                    <p class="weather__day">Ср 9</p>
+                    <img src="assets/img/icons/snowflake.svg" alt="Sun" class="weather__img">
+                    <div class="weather__degrees">
+                        <p class="weather__day-degrees">8°</p>
+                        <p class="weather__night-degrees">1°</p>
+                    </div>
+                </div>
+                <div class="weather__item">
+                    <p class="weather__day">Чт 10</p>
+                    <img src="assets/img/icons/snow-and-rain.svg" alt="Sun" class="weather__img">
+                    <div class="weather__degrees">
+                        <p class="weather__day-degrees">16°</p>
+                        <p class="weather__night-degrees">9°</p>
+                    </div>
+                </div>
+                <div class="weather__item">
+                    <p class="weather__day">Пт 11</p>
+                    <img src="assets/img/icons/rainy.svg" alt="Sun" class="weather__img">
+                    <div class="weather__degrees">
+                        <p class="weather__day-degrees">17°</p>
+                        <p class="weather__night-degrees">12°</p>
+                    </div>
+                </div>
+                <div class="weather__item">
+                    <p class="weather__day">Сб 12</p>
+                    <img src="assets/img/icons/sun.svg" alt="Sun" class="weather__img">
+                    <div class="weather__degrees">
+                        <p class="weather__day-degrees">14°</p>
+                        <p class="weather__night-degrees">7°</p>
+                    </div>
+                </div>
+                <div class="weather__item">
+                    <p class="weather__day">Вс 13</p>
+                    <img src="assets/img/icons/rain.svg" alt="Sun" class="weather__img">
+                    <div class="weather__degrees">
+                        <p class="weather__day-degrees">10°</p>
+                        <p class="weather__night-degrees">11°</p>
+                    </div>
+                </div>
+
+            </div><!-- weather__items -->
+        </main>
+
+        <footer class="footer">
+            <p class="footer__title">Подробнее</p>
+            <div class="footer__details">
+
+                <div class="footer__items">
+
+                    <div class="footer__item">
+                        <p class="item__title">По ощущениям</p>
+                        <p class="item__text">2°</p>
+                    </div>
+                    <div class="footer__item">
+                        <p class="item__title">Влажность</p>
+                        <p class="item__text">73%</p>
+                    </div>
+                    <div class="footer__item">
+                        <p class="item__title">Видимость</p>
+                        <p class="item__text">10 км</p>
+                    </div>
+                    <div class="footer__item">
+                        <p class="item__title">Давление</p>
+                        <p class="item__text">760,00 мм</p>
+                    </div>
+                    <div class="footer__item">
+                        <p class="item__title">Ветер</p>
+                        <div class="item__wrapper">
+                            <img src="assets/img/icons/wind-icon.svg" alt="" class="item__img item__img--wind">
+                            <p class="item__text">4 м/с</p>
+                        </div>
+                    </div>
+    
+                </div><!-- footer__items -->
+    
+                <div class="footer__items footer__sunrise">
+                    <div class="footer__item">
+                        <p class="item__title">Восход</p>
+                        <div class="item__wrapper">
+                            <img src="assets/img/icons/sun-up.svg" alt="" class="item__img">
+                            <p class="item__text">7:23</p>
+                        </div>
+                    </div>
+                    <div class="footer__item">
+                        <p class="item__title">Закат</p>
+                        <div class="item__wrapper">
+                            <img src="assets/img/icons/sun-down.svg" alt="" class="item__img">
+                            <p class="item__text">18:42</p>
+                        </div>
+                    </div>
+                </div><!-- footer__items -->
+
+            </div><!-- footer__details -->
+        </footer>
+
+
+    </div><!-- container -->
+</div><!-- weather__page -->
+
+
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
