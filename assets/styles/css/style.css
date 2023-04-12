@@ -232,8 +232,9 @@ body {
 .footer__items {
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, auto);
   grid-auto-rows: auto;
+  justify-content: space-between;
   max-width: 500px;
   width: 100%;
   padding-top: 24px;
@@ -249,6 +250,7 @@ body {
   margin-bottom: 32px;
   display: flex;
   flex-direction: column;
+  width: auto;
 }
 
 .item__title {
