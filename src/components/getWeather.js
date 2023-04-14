@@ -10,7 +10,5 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=55.7558&lon=37.6173&a
 }).then(function(data){
     data = data;
 })
-console.log(data);
-export default data;
 
 
