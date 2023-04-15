@@ -5,7 +5,7 @@ class FooterItem extends React.Component{
         return(
             <div className="footer__item">
                 <p className="item__title">{this.props.title}</p>
-                <p className="item__text">{this.props.degrees}°</p>
+                <p className="item__text">{this.props.data}{this.props.unit}</p>
             </div>
         )
     }
@@ -17,7 +17,7 @@ class FooterTime extends React.Component{
             <div className="footer__item">
                 <p className="item__title">{this.props.title}</p>
                 <div className="item__wrapper">
-                    <img src={this.props.path} className="item__img"></img>
+                    <img src={this.props.path} className="item__img"/>
                     <p className="item__text">{this.props.time}</p>
                 </div>
             </div>
@@ -27,19 +27,19 @@ class FooterTime extends React.Component{
 class Footer extends React.Component{
     render(){
         return (
-            <footer className="footer">
+            <footer className="footer" onLoad={this.props.weather}>
                 <p className="footer__title">Подробнее</p>
                 <div className="footer__details">
                 <div className="footer__items">
-                    <FooterItem title='По ощущениям' degrees='2'/>
-                    <FooterItem title='Влажность' degrees='73'/>
-                    <FooterItem title='Видимость' degrees='10'/>
-                    <FooterItem title='Давление' degrees='760,00'/>
-                    <FooterItem title='Ветер' degrees='4'/>
+                    <FooterItem title='По ощущениям' data={this.props.feelsLike} unit = '°'/>
+                    <FooterItem title='Влажность' data={this.props.humidity} unit = '%'/>
+                    <FooterItem title='Видимость' data={this.props.visibility} unit = ' м'/>
+                    <FooterItem title='Давление' data={this.props.pressure} unit = ' мм'/>
+                    <FooterItem title='Ветер' data={this.props.windSpeed} unit = ' м/с'/>
                 </div>
                 <div className="footer__items footer__sunrise">
-                    <FooterTime title='Восход' time='7:23' path='assets/img/icons/sun-up.svg'/>
-                    <FooterTime title='Закат' time='18:42' path='assets/img/icons/sun-down.svg'/>
+                    <FooterTime title='Восход' time={this.props.sunrise} path='assets/img/icons/sun-up.svg'/>
+                    <FooterTime title='Закат' time={this.props.sunset} path='assets/img/icons/sun-down.svg'/>
                 </div>
                 </div>
             </footer>
