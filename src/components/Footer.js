@@ -31,24 +31,26 @@ class FooterTime extends React.Component{
 }
 class Footer extends React.Component{
     render(){
-        return (
-            <footer className="footer" onLoad={this.props.weather}>
-                <p className="footer__title">Подробнее</p>
-                <div className="footer__details">
-                <div className="footer__items">
-                    <FooterItem title='По ощущениям' data={this.props.feelsLike} unit = '°'/>
-                    <FooterItem title='Влажность' data={this.props.humidity} unit = '%'/>
-                    <FooterItem title='Видимость' data={this.props.visibility} unit = ' км'/>
-                    <FooterItem title='Давление' data={this.props.pressure} unit = ' мм'/>
-                    <FooterItem title='Ветер' data={this.props.windSpeed} image = 'assets/img/icons/wind-icon.svg' unit = ' м/с'/>
-                </div>
-                <div className="footer__items footer__sunrise">
-                    <FooterTime title='Восход' time={this.props.sunrise} path='assets/img/icons/sun-up.svg'/>
-                    <FooterTime title='Закат' time={this.props.sunset} path='assets/img/icons/sun-down.svg'/>
-                </div>
-                </div>
-            </footer>
-        )
+        if(this.props.city){
+            return (
+                <footer className="footer" onSubmit={this.props.weather}>
+                    <p className="footer__title">Подробнее</p>
+                    <div className="footer__details">
+                    <div className="footer__items">
+                        <FooterItem title='По ощущениям' data={this.props.feelsLike} unit = '°'/>
+                        <FooterItem title='Влажность' data={this.props.humidity} unit = '%'/>
+                        <FooterItem title='Видимость' data={this.props.visibility} unit = ' км'/>
+                        <FooterItem title='Давление' data={this.props.pressure} unit = ' мм'/>
+                        <FooterItem title='Ветер' data={this.props.windSpeed} image = 'assets/img/icons/wind-icon.svg' unit = ' м/с'/>
+                    </div>
+                    <div className="footer__items footer__sunrise">
+                        <FooterTime title='Восход' time={this.props.sunrise} path='assets/img/icons/sun-up.svg'/>
+                        <FooterTime title='Закат' time={this.props.sunset} path='assets/img/icons/sun-down.svg'/>
+                    </div>
+                    </div>
+                </footer>
+            )
+        }
     }
 };
 

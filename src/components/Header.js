@@ -1,12 +1,13 @@
 import React from "react";
+import { weatherForm } from "../utils/weatherForm";
 
 class Header extends React.Component{
     render(){
         return (
         <header className="header">
             <form className="weather__form" onSubmit={this.props.weather}>
-                <input type="text" name="city" placeholder="Введите город" className="weather__input"/>
-                <button className="weather__submit">Показать</button>
+                <input type="text" name="city" placeholder="Введите город" className="weather__input" onChange={weatherForm}/>
+                <button className="weather__submit invisible"></button>
             </form>
             <div className="header__item">
                 <p className="header__city">{this.props.city}</p>
@@ -47,7 +48,6 @@ class Header extends React.Component{
                 </main>
                 <p className="header__weather">{this.props.weatherDesc}</p>
             </div>
-            
         </header>
         )
     }

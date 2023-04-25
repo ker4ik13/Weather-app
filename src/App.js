@@ -2,8 +2,9 @@ import React from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
+import loadingAnim from './utils/loadingAnim';
 
-const API_KEY2 = '9888183327cf4a16985171533231504'
+const API_KEY2 = '9888183327cf4a16985171533231504';
 
 class App extends React.Component{
   state = {
@@ -46,13 +47,15 @@ class App extends React.Component{
     day7Date: undefined,
     error: undefined,
     }
-
   gettingWeather = async (event) => {
     event.preventDefault();
+    loadingAnim(0);
+
     const city = event.target.elements.city.value;
 
     const api__url = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY2}&q=${city}&days=21&aqi=no&alerts=no`)
     const dataWeek = await api__url.json();
+    await loadingAnim(500);
 
     this.setState({
       temp: Math.floor(dataWeek.current.temp_c),
@@ -70,7 +73,6 @@ class App extends React.Component{
       isDay: dataWeek.current.is_day,
       nowIcon: dataWeek.current.condition.icon,
       todayWeather: dataWeek.forecast.forecastday[0].day.condition.text,
-
       day2MaxTemp: Math.floor(dataWeek.forecast.forecastday[1].day.maxtemp_c),
       day2MinTemp: Math.floor(dataWeek.forecast.forecastday[1].day.mintemp_c),
       day2Condition: dataWeek.forecast.forecastday[1].day.condition.text,
@@ -110,6 +112,7 @@ class App extends React.Component{
       weatherDesc = {this.state.weatherDesc}/>
 
       <Main weather = {this.gettingWeather}
+      city = {this.state.city}
       tempMax = {this.state.tempMax}
       tempMin = {this.state.tempMin}
       todayWeather = {this.state.todayWeather}
@@ -140,6 +143,7 @@ class App extends React.Component{
       day7Date = {this.state.day7Date}/>
       
       <Footer weather = {this.gettingWeather}
+      city = {this.state.city}
       feelsLike = {this.state.feelsLike}
       humidity = {this.state.humidity}
       pressure = {this.state.pressure}

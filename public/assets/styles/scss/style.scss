@@ -1,5 +1,6 @@
 @import 'nullstyle';
 @import 'fonts';
+@import 'skeleton';
 
 body{
     font-family: 'Roboto', sans-serif;
@@ -10,7 +11,13 @@ body{
     height: 100%;
     overflow-x: hidden;
 }
-
+.skeleton img{
+    display: none;
+}
+.invisible{
+    opacity: 0;
+    visibility: hidden;
+}
 // weather page
 
 .weather__page {
@@ -42,6 +49,7 @@ body{
     align-items: center;
     justify-content: center;
     gap: 20px;
+    position: relative;
     transition: background-color .2s ease-in-out;
     &.error__input{
         background-color: #ff2f2f;
@@ -62,11 +70,38 @@ body{
     }
 }
 .weather__submit{
-    border-radius: 50px;
-    width: 240px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    width: 60px;
     height: 60px;
-    background-color: #fff;
-    font-size: 20px;
+    background-color: #00ff77;
+    transition: background-color .2s linear, opacity .2s linear, visibility .2s linear;
+    z-index: 1;
+    &::before{
+        content: '';
+        position: absolute;
+        bottom: 16px;
+        right: 23px;
+        height: 26px;
+        width: 2px;
+        transform: rotate(30deg);
+        background-color: #000;
+        border-radius: 1px;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: 16px;
+        right: 34px;
+        height: 20px;
+        width: 2px;
+        background-color: #000;
+        transform: rotate(-30deg);
+        border-radius: 1px;
+    }
+
 }
 .header__item{
     display: flex;
@@ -222,11 +257,17 @@ body{
     }
 }
 @media(max-width: 768px){
+    .container{
+        padding: 20px 20px 0;
+    }
+    .header__img{
+        width: 60px;
+    }
     .header__item{
         gap: 15px;
     }
     .weather__form{
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         flex-direction: column;
     }
     .weather__input{
@@ -234,9 +275,16 @@ body{
         font-size: 18px;
     }
     .weather__submit{
-        width: 100%;
+        width: 50px;
         height: 50px;
-        font-size: 18px;
+        &::after{
+            bottom: 13px;
+            right: 30px;
+        }
+        &::before{
+            bottom: 13px;
+            right: 19px;
+        }
     }
     .header__city{
         font-size: 24px;
@@ -266,8 +314,15 @@ body{
         width: 100%;
         height: auto;
     }
+    .weather__day{
+        width: 80px;
+    }
     .weather__img{
         max-width: 40px;
+    }
+    .weather__degrees{
+        width: 100px;
+        justify-content: space-evenly;
     }
     .footer__title{
         text-align: center;
@@ -283,7 +338,10 @@ body{
     }
     .footer__sunrise{
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-around;
         gap: 20vw;
+    }
+    .item__text{
+        font-size: 20px;
     }
 }
