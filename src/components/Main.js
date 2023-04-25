@@ -11,7 +11,9 @@ class WeatherItem extends React.Component{
         return(
             <div className={this.props.class}>
                 <p className="weather__day">{this.props.day}</p>
-                {this.props.weatherDesc == "пасмурно" &&
+                {this.props.weatherDesc == "Heavy rain" &&
+                    <img src={this.rain} className="weather__img"/>
+                }{this.props.weatherDesc == "облачно с прояснениями" &&
                     <img src={this.cloudy} className="weather__img"/>
                 }{this.props.weatherDesc === 'солнечно' && 
                     <img src={this.sun} className="weather__img"/>
@@ -48,8 +50,8 @@ class Main extends React.Component{
         return (
             <main className="main">
                 <p className="main__title">По дням</p>
-                <div className="weather__items" onLoad={this.props.weather}>
-                    <WeatherItem class='weather__item weather__item--today' day='Сегодня' tempMax = {this.props.tempMax} tempMin = {this.props.tempMin} weatherDesc = {this.props.weatherDesc}/>
+                <div className="weather__items" onSubmit={this.props.weather}>
+                    <WeatherItem class='weather__item weather__item--today' day='Сегодня' tempMax = {this.props.tempMax} tempMin = {this.props.tempMin} weatherDesc = {this.props.todayWeather}/>
                     <WeatherItem class='weather__item' day = 'Завтра' tempMax = {this.props.day2MaxTemp} tempMin = {this.props.day2MinTemp} weatherDesc = {this.props.day2Condition}/>
                     <WeatherItem class='weather__item' day = {this.props.day3Date} tempMax = {this.props.day3MaxTemp} tempMin = {this.props.day3MinTemp} weatherDesc = {this.props.day3Condition}/>
                     <WeatherItem class='weather__item' day = {this.props.day4Date} tempMax = {this.props.day4MaxTemp} tempMin = {this.props.day4MinTemp} weatherDesc = {this.props.day4Condition}/>

@@ -38,7 +38,7 @@ class Footer extends React.Component{
                 <div className="footer__items">
                     <FooterItem title='По ощущениям' data={this.props.feelsLike} unit = '°'/>
                     <FooterItem title='Влажность' data={this.props.humidity} unit = '%'/>
-                    <FooterItem title='Видимость' data={this.props.visibility} unit = ' м'/>
+                    <FooterItem title='Видимость' data={this.props.visibility} unit = ' км'/>
                     <FooterItem title='Давление' data={this.props.pressure} unit = ' мм'/>
                     <FooterItem title='Ветер' data={this.props.windSpeed} image = 'assets/img/icons/wind-icon.svg' unit = ' м/с'/>
                 </div>

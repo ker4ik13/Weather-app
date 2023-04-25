@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 
-const API_KEY = '109440449518b43abeb4e646cc838d3f';
 const API_KEY2 = '9888183327cf4a16985171533231504'
 
 class App extends React.Component{
@@ -20,6 +19,7 @@ class App extends React.Component{
     sunset: undefined,
     visibility: undefined,
     windSpeed: undefined,
+    isDay: undefined,
     day2MaxTemp: undefined,
     day2MinTemp: undefined,
     day2Condition: undefined,
@@ -47,41 +47,30 @@ class App extends React.Component{
     error: undefined,
     }
 
-  gettingWeather = async () => {
-    const api_url_today = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=${API_KEY}&units=metric&lang=ru`);
-    const data = await api_url_today.json();
+  gettingWeather = async (event) => {
+    event.preventDefault();
+    const city = event.target.elements.city.value;
 
-    const api__url__week = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY2}&q=Moscow&days=21&aqi=no&alerts=no`)
-    const dataWeek = await api__url__week.json();
-    console.log(dataWeek);
-
-
-    let sunset = data.sys.sunset;
-    let dateSunset = new Date();
-    dateSunset.setTime(sunset);
-    let sunsetDate = dateSunset.getHours() + ':' + dateSunset.getMinutes();
-
-    let sunrise = data.sys.sunrise;
-    let dateSunrise = new Date();
-    dateSunrise.setTime(sunrise);
-    let sunriseDate = dateSunrise.getHours() + ':' + dateSunrise.getMinutes();
-    console.log(sunrise);
-    console.log(dateSunrise);
-    console.log(sunriseDate);
+    const api__url = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY2}&q=${city}&days=21&aqi=no&alerts=no`)
+    const dataWeek = await api__url.json();
 
     this.setState({
-      temp: Math.floor(data.main.temp),
-      weatherDesc: data.weather[0].description,
-      city: data.name,
-      tempMax: Math.floor(data.main.temp_max),
-      tempMin: Math.floor(data.main.temp_min),
-      feelsLike: Math.floor(data.main.feels_like),
-      humidity: data.main.humidity,
-      pressure: data.main.pressure,
-      sunrise: sunriseDate,
-      sunset: sunsetDate,
-      visibility: data.visibility,
-      windSpeed: Math.floor(data.wind.speed),
+      temp: Math.floor(dataWeek.current.temp_c),
+      weatherDesc: dataWeek.current.condition.text,
+      city: dataWeek.location.name,
+      tempMax: Math.floor(dataWeek.forecast.forecastday[0].day.maxtemp_c),
+      tempMin: Math.floor(dataWeek.forecast.forecastday[0].day.mintemp_c),
+      feelsLike: Math.floor(dataWeek.current.feelslike_c),
+      humidity: dataWeek.current.humidity,
+      pressure: dataWeek.current.pressure_mb,
+      sunrise: dataWeek.forecast.forecastday[0].astro.sunrise,
+      sunset: dataWeek.forecast.forecastday[0].astro.sunset,
+      visibility: dataWeek.current.vis_km,
+      windSpeed: Math.floor(dataWeek.current.wind_kph),
+      isDay: dataWeek.current.is_day,
+      nowIcon: dataWeek.current.condition.icon,
+      todayWeather: dataWeek.forecast.forecastday[0].day.condition.text,
+
       day2MaxTemp: Math.floor(dataWeek.forecast.forecastday[1].day.maxtemp_c),
       day2MinTemp: Math.floor(dataWeek.forecast.forecastday[1].day.mintemp_c),
       day2Condition: dataWeek.forecast.forecastday[1].day.condition.text,
@@ -116,11 +105,14 @@ class App extends React.Component{
       <><Header weather = {this.gettingWeather}
       city = {this.state.city}
       temp = {this.state.temp}
+      icon = {this.state.icon}
+      error = {this.state.error}
       weatherDesc = {this.state.weatherDesc}/>
 
       <Main weather = {this.gettingWeather}
       tempMax = {this.state.tempMax}
       tempMin = {this.state.tempMin}
+      todayWeather = {this.state.todayWeather}
       weatherDesc = {this.state.weatherDesc}
       day2MaxTemp = {this.state.day2MaxTemp}
       day2MinTemp = {this.state.day2MinTemp}
