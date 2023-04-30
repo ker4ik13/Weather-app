@@ -53,7 +53,7 @@ class App extends React.Component{
 
     const city = event.target.elements.city.value;
 
-    const api__url = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY2}&q=${city}&days=21&aqi=no&alerts=no`)
+    const api__url = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY2}&q=${city}&days=7&aqi=no&alerts=no`)
     const dataWeek = await api__url.json();
     await loadingAnim(500);
 
